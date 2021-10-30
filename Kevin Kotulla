@@ -1,0 +1,30 @@
+-- Kevin Kotulla, 1795280
+
+operations = "2p3p3m6p2"
+
+function auswerten(string)
+    t = {}
+    for i = 1, #string do
+        t[i] = string:sub(i, i)
+    end
+    
+    ergebnis = t[1]
+    i = 1
+    while i < #string do
+        if i%2 == 0 then
+            if t[i] == "p" then
+                ergebnis = ergebnis + t[i + 1]
+            elseif t[i] == "m" then
+                ergebnis = ergebnis - t[i + 1]
+            elseif t[i] == "n" then
+                ergebnis = ergebnis * t[i + 1]
+            elseif t[i] == "d" then
+                ergebnis = ergebnis / t[i + 1]
+            end
+        end
+        i = i + 1
+    end
+    print("Das Ergebnis des Ausdrucks "..string.." ist "..ergebnis)
+end
+
+auswerten(operations)
